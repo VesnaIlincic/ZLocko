@@ -59,11 +59,55 @@
     $srvr=$s/$len;
     echo $srvr."<br><br>";
 
-    /*Zad.4. Odrediti max vrednost u celobrojnom nizu.*/
+/*Zad.4. Odrediti max vrednost u celobrojnom nizu.*/
 
-
+$clbr1=array(3, -5, 24, -12, 33);
+$len1=count($clbr1);
+$max=$clbr1[0];
+for($i=1;$i<$len1;$i++)
+    {
+        if($max<=$clbr1[$i])
+        {
+            $max=$clbr1[$i];
+        }
+    }
+echo "Maksimalna vrednost datog celobrojnog niza je: $max <br><br>";
     
-    /*Zad.5. Odrediti min vrednost u celobrojnom nizu.*/
+/*Zad.5. Odrediti min vrednost u celobrojnom nizu.*/
+
+$clbr2=array(7, 34, -85, 9, -3, -67);
+$len2=count($clbr2);
+$min=$clbr2[0];
+for($i=1;$i<$len2;$i++)
+{
+    if($min>=$clbr2[$i])
+    {
+        $min=$clbr2[$i];
+    }
+}
+echo "Minimalna vrednost datog celobrojnog niza je: $min <br><br>";
+
+/*Zad.6. Odrediti indeks najvećeg elementa celobrojnog niza.*/
+
+
+
+/*Zad.7 Odrediti broj elemenata celobrojnog niza koji su veći od srednje vrednosti.*/
+
+
+
+/*Zad.8. Izračunati zbir pozitivnih elemenata celobrojnog niza.*/
+
+
+
+/*Zad.9. Odrediti broj parnih elemenata u celobrojnom nizu.*/
+
+
+
+/*Zad.10. Izračunati sumu elemenata u nizu sa parnim indeksom.*/
+
+
+
+
 
 
 
