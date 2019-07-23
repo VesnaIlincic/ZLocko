@@ -27,7 +27,7 @@ echo "<br>";
 /*Zad.2. Odrediti indeks i vrednost prvog člana niza realnih brojeva koji je najbliži srednjoj vrednosti.
 (druga for petlja aps. vrednost  min razlike sr.broja i elem.niza)*/
 
-$niz2=array(4, -3, 98, -45, 63, -25, -32);
+$niz2=array(-25, -8, 98, -45, 63, 5, -32);
 $suma2=0;
 $len2=count($niz2);
 foreach($niz2 as $elem2)
@@ -36,14 +36,17 @@ foreach($niz2 as $elem2)
 }
 $sredvr=$suma2/$len2;
 echo "Srednja vrednost ovog niza je: $sredvr <br>";
-for($i=0;$i<$len2;$i++)
+$naj=$niz2[0];
+$br2=0;
+$min=abs($niz2[0]-$sredvr);
+for($i=0;$i<$len2-1;$i++)
 {   
-    $min=abs($sredvr-$niz2[$i]);
-    if($min<$sredvr)
-    {
-        echo "Prvi clan niza najblizi njegovoj srednjoj vrednosti je: $niz2[$i], indeksa $i <br>";
-        break;
+    $m=abs($niz2[$i]-$sredvr);
+    if($m<$min)
+    {   $min=$m;
+        $naj=$niz2[$i];
+        $br2=$i;
     }
 }
-
+echo "Prvi clan niza najblizi njegovoj srednjoj vrednosti je: $naj, indeksa $br2 <br>";
 ?>
