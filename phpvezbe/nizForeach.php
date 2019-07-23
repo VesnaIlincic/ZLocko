@@ -214,7 +214,8 @@ foreach($niz3 as $elem3)
 }
 echo "Broj stringova koi pocinju na slovo a ili A: $br5";
 
-/*Zad.19. Na osnovu celobrojnog niza $a[0], $a[1], … formirati niz $b[0], $b[1], ... koji sadrži samo pozitivne brojeve.*/
+/*Zad.19. Na osnovu celobrojnog niza $a[0], $a[1], … formirati niz $b[0], $b[1], ... 
+koji sadrži samo pozitivne brojeve.*/
 
 $a=array(-2, 4, -67, 34, -34, -23);
 $lena=count($a);
