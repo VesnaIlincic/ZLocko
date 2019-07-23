@@ -365,17 +365,21 @@ foreach($osobe as $vis=>$vis_value)
 
 /*Zad. Ispisati sve osobe sa visinom ispod proseka, a čije ime počinje na slovo 'V'.*/
 
-
-
-
-
-
-
-
-
-
-
-
-
+$osoba=array("Vesna"=>165, "Vanja"=>158, "Jelena"=>176, "Darko"=>189, "Veselin"=>177);
+$len=count($osoba);
+$sumaVis=0;
+foreach($osoba as $pros=>$pros_value)
+{
+    $sumaVis+=$pros_value;
+}
+$prosVis=$sumaVis/$len;
+echo "Osobe visine ispod proseka ($prosVis cm) datog niza i cije ime pocinje slovom V su: <br>";
+foreach($osoba as $pros=>$pros_value)
+{
+    if($prosVis>$pros_value && substr($pros, 0, 1)=='V')
+    {
+        echo "$pros <br>";
+    }
+}
 
 ?>
