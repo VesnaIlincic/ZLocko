@@ -1,7 +1,6 @@
 <?php
 
-/*Zad.1. Odrediti koliko elemenata u nizu celih brojeva ima maksimalnu vrednost.
-(koliko elem. Ima vrednost jednaku maximalnoj)*/
+/*Zad.1. Odrediti koliko elemenata u nizu celih brojeva ima maksimalnu vrednost.*/
 
 $niz1=array(-2, 4, -6, 8, 34, 56, 18, 6, 56 );
 $max=$niz1[0];
@@ -24,8 +23,7 @@ foreach($niz1 as $elem1)
 echo "Ovaj niz ima $br1 maksimalnih elemenata <br>";
 echo "<br>";
 
-/*Zad.2. Odrediti indeks i vrednost prvog člana niza realnih brojeva koji je najbliži srednjoj vrednosti.
-(druga for petlja aps. vrednost  min razlike sr.broja i elem.niza)*/
+/*Zad.2. Odrediti indeks i vrednost prvog člana niza realnih brojeva koji je najbliži srednjoj vrednosti.*/
 
 $niz2=array(-25, -8, 98, -45, 63, 5, -32);
 $suma2=0;
