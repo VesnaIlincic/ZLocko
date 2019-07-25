@@ -5,13 +5,16 @@ koji sadrži samo pozitivne brojeve.*/
 
 $a=array(-2, 4, -67, 34, -34, -23);
 $lena=count($a);
+$b=array();
+$j=0;
 echo "Pozitivni brojevi datog celobrojnog niza su: <br>";
 for($i=0;$i<$lena-1;$i++)
-{
+{   
     if($a[$i]>=0)
-    {
-        $b[$i]=$a[$i];
-        echo "$b[$i] <br>";
+    {   
+        $b[$j]=$a[$i];
+        echo " Niz b($j) je: $b[$j] <br>";
+        $j++;
     } 
 }
 echo "<br>";

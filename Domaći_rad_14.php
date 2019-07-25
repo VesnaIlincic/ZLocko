@@ -12,9 +12,9 @@ for($i=1;$i<count($niz1);$i++)
     }
 }
 echo "Maksimalna vrednost niza je: $max1 <br>";
+$br1=0;
 foreach($niz1 as $elem1)
 {
-    $br1=1;
     if($max1==$elem1)
     {
         $br1++;
