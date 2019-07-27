@@ -243,15 +243,6 @@ switch($redbrMes)
     }
 echo "<br><br>";
 
-
-
-
-
-
-
-
-
-
  /*Zad.8. Na osnovu unete boje na engleskom jeziku obojiti tekst paragrafa u crveno, zeleno ili plavo. 
  Ukoliko nije uneta ni jedna od ove tri boje, tekst paragrafa obojiti u žuto.*/
 
