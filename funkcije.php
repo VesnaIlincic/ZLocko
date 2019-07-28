@@ -282,7 +282,8 @@ echo maks2(5, 98);
 echo "<br><br>";
 
 function maks4($a, $b, $c, $d)
-{   $max=$a;
+{   
+    $max=$a;
     if($b>$max)
         {
             $max=$b;
@@ -291,24 +292,24 @@ function maks4($a, $b, $c, $d)
     elseif($c>$max)
     {   
         $max=$c;
-        return $c;
+        return $max;
     }
     elseif($d>$max)
     {
         $max=$d;
-        return $d;
+        return $max;
     }
 }
 echo maks4(4, 7, 3, 0);
 echo "<br><br>";
 
-function maksCetiri($a, $b,$c,$d)
+function maksCetiri($a, $b, $c, $d)
 {
     $maks1=maks2($a, $b);
     $maks2=maks2($c, $d);
-    $maks=maks2($maks1, $maks2);
+    $maksV=maks2($maks1, $maks2);
     /*Kraci nacin: $maks=maks2(maks2($a, $b), maks2($c, $d))*/
-    return $maks;
+    return $maksV;
 }
 $m=maksCetiri(1, -3, -5, 7);
 echo $m;
@@ -347,7 +348,7 @@ function Boja($boja)
             echo "<p style='color:blue'>Obojeni paragraf</p>";
             break;
     }
-    return;
+    return $boja;
 }
 echo Boja("red");
 echo "<br><br>";
