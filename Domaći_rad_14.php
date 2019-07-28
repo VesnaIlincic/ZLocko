@@ -8,14 +8,14 @@ for($i=1;$i<count($niz1);$i++)
 {
     if($niz1[$i]>$max)
     {
-        $max1=$niz1[$i];
+        $max=$niz1[$i];
     }
 }
-echo "Maksimalna vrednost niza je: $max1 <br>";
+echo "Maksimalna vrednost niza je: $max <br>";
 $br1=0;
 foreach($niz1 as $elem1)
 {
-    if($max1==$elem1)
+    if($max==$elem1)
     {
         $br1++;
     }
