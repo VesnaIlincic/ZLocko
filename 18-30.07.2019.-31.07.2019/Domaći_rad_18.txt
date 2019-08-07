@@ -1,0 +1,32 @@
+//1.Kreirati tabelu products koja od kolona sadrži:
+//*productId tipa INT, koja je primarni kljuè,
+//*productCode tipa CHAR(5) NOT NULL DEFAULT ‘’,
+//*name tipa VARCHAR(30) NOT NULL DEFAULT ‘’,
+//*quantity tipa SMALLINT NOT NULL,
+//*price tipa INT
+
+CREATE TABLE `itbootcamp`.`products` 
+( 
+	`productId` INT PRIMARY KEY ,
+	`productCode` CHAR(5) NOT NULL DEFAULT 'TRUE' , 
+	`name` VARCHAR(30) NOT NULL DEFAULT 'TRUE' , 
+	`quantity` SMALLINT NOT NULL , 
+	`price` INT NULL 
+) 
+ENGINE = InnoDB CHARSET=utf16 COLLATE utf16_slovenian_ci;
+
+//2.Potom izmeniti tabelu tako što æete:
+//*Koloni quantity dodati DEFAULT vrednost na 0,
+//*Kolonu price promeniti na tip DECIMAL(7,2) NOT NULL DEFAULT 0,
+//*Dodati kolonu description tipa TEXT i to pre kolone price.
+
+ALTER TABLE `products` 
+MODIFY COLUMN `quantity`SMALLINT NOT NULL DEFAULT '0';
+
+ALTER TABLE `products` 
+MODIFY `price` DECIMAL(7,2) NOT NULL DEFAULT '0';
+
+ALTER TABLE `products` 
+ADD COLUMN `description` TEXT 
+AFTER `quantity`;
+

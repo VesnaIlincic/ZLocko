@@ -1,0 +1,20 @@
+﻿//1. Selektovati sve natprosečno teške osobe.
+SELECT * 
+FROM `pacijenti` 
+WHERE tezina>(SELECT AVG(tezina) FROM pacijenti);
+
+//2. Selektovati sve ljude natprosečne težine čije ime počinje slovom ‘M’.
+SELECT * 
+FROM `pacijenti` 
+WHERE ime LIKE "M%" and tezina>(SELECT AVG(tezina) FROM pacijenti);
+
+//3. Prebrojati koliko ljudi ima maksimalnu težinu.
+SELECT COUNT(id) 
+FROM `pacijenti` 
+WHERE tezina=(SELECT MAX(tezina) FROM pacijenti);
+
+//4. Ispisati sve podatke o ljudima koji imaju minimalnu težinu.
+SELECT CONCAT(id, ". Ime: ", ime, ", Prezime:", prezime, ", Visina:", visina, ", Tezina: ", tezina, "Godina rodjenja: ", god_rodjenja) 
+AS "id. ime, prezime, visina, tezina, god_rodjenja" 
+FROM `pacijenti` 
+WHERE tezina=(SELECT MIN(tezina) FROM pacijenti);

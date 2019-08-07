@@ -1,0 +1,18 @@
+﻿CREATE DATABASE videoteka 
+CHARACTER SET utf16 COLLATE utf16_slovenian_ci;//1.jkreiranje baze videoteka
+CREATE TABLE filmovi ( id INT PRIMARY KEY, naslov VARCHAR(255) NOT NULL, reziser VARCHAR(255) NOT NULL, god_izdavanja INT NOT NULL );//2.kreiranje tabele filmovi
+ALTER TABLE filmovi MODIFY COLUMN god_izdavanja YEAR;//3.menjanje datatype kolone god_izdavanja u YEAR
+INSERT INTO filmovi (id, naslov, reziser, god_izdavanja) 
+VALUES (1, "Dnevnik masinovodje", "Lazar Ristovski", 2016), (2, "Montevideo, bog te video", "Dragan Bjelogrlic", 2010), (3, "Enklava", "Goran Radovanovic", 2015), (4, "Lepa sela lepo gore", "Srdjan Dragojevic", 1996), (5, "Bure baruta", "Goran Paskaljevic", 1998), (6, "Klopka", "Srdjan Golubovic", 2007);//4.unos podataka u tabelu
+SELECT naslov, reziser 
+FROM `filmovi`;//5.izabrani svi naslovi filmova i reziseri
+SELECT naslov, reziser 
+FROM `filmovi` 
+WHERE god_izdavanja>=2010 AND reziser LIKE "%Goran%";//6.selektovanje naslova posle 2010 i rezisera cije ime sadrzi Goran 
+SELECT naslov, god_izdavanja 
+FROM `filmovi` 
+ORDER BY god_izdavanja DESC;//7. sortiranje naslova filmova igodine izdavanja od najnovijih ka najstarijim
+SELECT DISTINCT god_izdavanja 
+FROM `filmovi` 
+WHERE god_izdavanja<=2019 and god_izdavanja>=2010;//8. selektovanje razlicite godine izdavanja filmova izmedj 2010. i 2019.
+

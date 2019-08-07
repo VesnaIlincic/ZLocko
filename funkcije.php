@@ -584,11 +584,12 @@ echo "<br><br>";
 
 $n=5;
 $m=15;
+$br=0;
 function deljivi1($n, $m)
-{
+{   
 for($i=$n;$i<=$m;$i++)
 {
-    $br=0;
+    
     if($i%2==0)
     {
         $br++;
