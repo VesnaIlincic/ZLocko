@@ -1,27 +1,3 @@
-<html>
-    <head>
-        <style>
-        </style>
-    </head>
-    <body>
-        <form action="pacijenti_tabela+forma+php_sql.php" method="POST">
-            <label>Ime:</label>
-            <input type="text" name="ime"/>
-            <label>Prezime:</label>
-            <input type="text" name="prezime"/>
-            <label>Visina:</label>
-            <input type="number" name="visina"/>
-            <label>Težina:</label>
-            <input type="number" name="tezina"/>
-            <label>Godina rodjenja:</label>
-            <input type="date" name="god_rodjenja"/>
-            <input type="submit" value="Pretraga" name="pretraga"/>
-        </form>
-    </body>
-</html>
-
-
-
 <?php
 $servername="localhost";
 $username="admin";
@@ -34,10 +10,15 @@ if(!$conn)
 }
 echo "Uspesna konekcija! :)";
 mysqli_set_charset($conn, "utf8");
-if($_SERVER["REQUEST_METHOD"]=="POST")
+$sql=array();
+$sql[0]="SELECT * FROM pacijenti WHERE BMI<=20 ORDER BY ime ASC;";
+$sql[1]="SELECT * FROM pacijenti WHERE BMI>20 AND BMI<=26.5 ORDER BY ime ASC;";
+$sql[2]="SELECT * FROM pacijenti WHERE BMI>26.5 AND BMI<=31 ORDER BY ime ASC;";
+$sql[3]="SELECT * FROM pacijenti WHERE BMI>31 ORDER BY ime ASC;";
+$i=0;
+while($i<=3)
 {
-    $sql="SELECT * FROM pacijenti";
-    $result=mysqli_query($conn, $sql);
+    $result=mysqli_query($conn, $sql[$i]);
     if($result!=false)
     {
         if(mysqli_num_rows($result)==0)
@@ -45,17 +26,19 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
             echo "<p>Ne postoje pacijenti u bazi.</p>";
         }
         else
-        {
+        {   
             echo "<table cellpadding=1 cellspacing=1>";
             echo "<tr>";
             echo "<th>Ime</th>";
             echo "<th>Prezime</th>";
             echo "<th>Visina</th>";
             echo "<th>Tezina</th>";
-            echo "<th>Godina rodjenja</th>";
+            echo "<th>BMI</th>";
+            echo "<th> Godina rodjenja</th>";
             echo "</tr>";
+    
             while($red=mysqli_fetch_assoc($result))
-            {
+            {   
                 echo "<tr>";
                 echo "<td>";
                 echo $red["ime"];
@@ -70,24 +53,30 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                 echo $red["tezina"];
                 echo "</td>";
                 echo "<td>";
+                echo $red["BMI"];
+                echo "</td>";
+                echo "<td>";
                 echo $red["god_rodjenja"];
                 echo "</td>";
                 echo "</tr>";
             }
-        echo "</tr>";
-        echo "</table>";
+            echo "</tr>";
+            echo "</table><br>";
         }
     }
     else 
     {
         echo "Upit nije uspesno izvrsen!";
     }
+    $i++;
 }
+
+
 ?>
 <html>
     <head>
         <style>
-            table{width:1000px;border:1px solid}
+            table{width:400px;border:1px solid}
             th{border:1px solid;background-color:#cc33ff}
             td{border:1px solid}
             
