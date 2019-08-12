@@ -8,7 +8,7 @@ if(!$conn)
 {   
     die("Neuspela konekcija. Razlog: ".mysqli_connect_eror());
 }
-echo "Uspesna konekcija! :)";
+echo "Uspesna konekcija!";
 
 mysqli_set_charset($conn, "utf8");
 

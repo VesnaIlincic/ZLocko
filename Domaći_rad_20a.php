@@ -10,7 +10,7 @@ if(!$conn)
 {   
     die("Neuspela konekcija. Razlog: ".mysqli_connect_eror());
 }
-echo "Uspesna konekcija! :)";
+echo "Uspesna konekcija!";
 
 mysqli_set_charset($conn, "utf8");
 
@@ -54,7 +54,7 @@ if($result!=FALSE)
             echo "</tr>";
         }
     echo "</tr>";
-    echo "</table>";
+    echo "</table><br>";
     }
 }
 else 
@@ -64,20 +64,7 @@ else
 
 //2.Tabelarno prikazati sve informacije o najbolje rangiranim filmovima, abecedno po nazivu filma.
 
-$servername="localhost";
-$username="admin";
-$password="admin123";
-$database="videoteka";
-$conn=mysqli_connect($servername, $username, $password, $database);
-if(!$conn)
-{   
-    die("Neuspela konekcija. Razlog: ".mysqli_connect_eror());
-}
-echo "Uspesna konekcija! :)";
-
-mysqli_set_charset($conn, "utf8");
-
-$sql="SELECT * FROM filmovi WHERE ocena<=10 AND ocena>=8 ORDER BY naslov ASC;";
+$sql="SELECT * FROM filmovi WHERE ocena=(SELECT MAX(ocena) FROM filmovi) ORDER BY naslov ASC;";
 $result=mysqli_query($conn, $sql);
 if($result!=FALSE)
 {
@@ -128,19 +115,19 @@ else
 /*3.Za svaki žanr koji postoji u bazi prikazati po jednu tabelu, a u svakoj tabeli informacije o filmovima 
 koji pripadaju tom žanru, abecedno po nazivu filma.*/
 
-$zanr=array("drama", "komedija", "tragedija", "tragikomedija");
-foreach($zanr as $elem)
+$sql1="SELECT DISTINCT zanr FROM filmovi;";
+$result1=mysqli_query($conn, $sql1);
+if($result1!=FALSE)
 {
-    $sql="SELECT * FROM filmovi WHERE zanr='$elem' ORDER BY naslov ASC;";
-    $result=mysqli_query($conn, $sql);
-    if($result!=FALSE)
+    if(mysqli_num_rows($result1)==0)
     {
-        if(mysqli_num_rows($result)==0)
-        {
-            echo "<p>Ne postoje filmovi u bazi.</p>";
-        }
-        else
-        {
+        echo "<p>Ne postoje filmovi u bazi.</p>";
+    }
+    else
+    {   
+        while($red=mysqli_fetch_assoc($result1))
+        {   
+            echo "<br>";
             echo "<table cellpadding=1 cellspacing=1>";
             echo "<tr>";
             echo "<th>Naslov filma</th>";
@@ -149,7 +136,10 @@ foreach($zanr as $elem)
             echo "<th>Žanr</th>";
             echo "<th>Ocena</th>";
             echo "</tr>";
-            while($red=mysqli_fetch_assoc($result))
+            $zanr=$red["zanr"];
+            $sql2="SELECT * FROM filmovi WHERE zanr='$zanr' ORDER BY naslov;";
+            $result2=mysqli_query($conn, $sql2);
+            while($red=mysqli_fetch_assoc($result2))
             {
                 echo "<tr>";
                 echo "<td>";
@@ -167,18 +157,19 @@ foreach($zanr as $elem)
                 echo "<td>";
                 echo $red["ocena"];
                 echo "</td>";
-                echo "</tr>";
-            }
-        echo "</tr>";
-        echo "</table><br>";
+                echo "</tr>"; 
+            }  
         }
-    }
-    else 
-    {
-        echo "Upit nije uspesno izvrsen!";
-    }
+            echo "</tr>";
+            echo "</table>"; 
+            
+    } 
+}    
+else 
+{
+    echo "Upit nije uspesno izvrsen!";
 }
-
+   
 
 ?>
 <html>
@@ -193,4 +184,3 @@ foreach($zanr as $elem)
     </body>
     </head>
 </html>
-

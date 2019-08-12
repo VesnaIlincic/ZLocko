@@ -10,6 +10,7 @@ if(!$conn)
 }
 echo "Uspesna konekcija! :)";
 mysqli_set_charset($conn, "utf8");
+
 $sql=array();
 $sql[0]="SELECT * FROM pacijenti ORDER BY visina DESC;";
 $sql[1]="SELECT * FROM pacijenti ORDER BY tezina DESC;";
@@ -18,7 +19,6 @@ $i=0;
 while($i<=2)
 {
 $result=mysqli_query($conn, $sql[$i]);
-//Da li postoje redovi u tabeli??
 if($result!=false)
 {
     if(mysqli_num_rows($result)==0)

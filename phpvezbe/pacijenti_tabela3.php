@@ -13,7 +13,6 @@ mysqli_set_charset($conn, "utf8");
 
 $sql="SELECT * FROM pacijenti WHERE prezime LIKE 'P%' ORDER BY ime ASC;";
 $result=mysqli_query($conn, $sql);
-//Da li postoje redovi u tabeli??
 if($result!=false)
 {
     if(mysqli_num_rows($result)==0)

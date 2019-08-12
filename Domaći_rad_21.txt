@@ -1,0 +1,7 @@
+﻿CREATE DATABASE drustvena_mreza CHARACTER SET utf16 COLLATE utf16_slovenian_ci;
+CREATE TABLE korisnici(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, korisnicko_ime VARCHAR(45) NOT NULL);
+CREATE TABLE kategorije(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, naziv VARCHAR(45) NOT NULL);
+CREATE TABLE objave(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, naslov_objave VARCHAR(45));
+CREATE TABLE profili(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, adresa VARCHAR(45) NOT NULL, korisnici_id INT NOT NULL, FOREIGN KEY(korisnici_id) REFERENCES korisnici(id));
+CREATE TABLE komentari(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, tekst_komentara VARCHAR(45), objave_id INT NOT NULL, FOREIGN KEY(objave_id) REFERENCES objave(id));
+CREATE TABLE objave_has_kategorije(objave_id INT NOT NULL, FOREIGN KEY(objave_id) REFERENCES objave(id), kategorije_id INT NOT NULL, FOREIGN KEY(kategorije_id) REFERENCES kategorije(id));

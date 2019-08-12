@@ -8,13 +8,16 @@ if(!$conn)
 {   
     die("Neuspela konekcija. Razlog: ".mysqli_connect_eror());
 }
-echo "Uspesna konekcija! :)";
+echo "Uspesna konekcija!";
 mysqli_set_charset($conn, "utf8");
+
+//1.nacin
+
 $sql=array();
-$sql[0]="SELECT * FROM pacijenti WHERE BMI<=20 ORDER BY ime ASC;";
-$sql[1]="SELECT * FROM pacijenti WHERE BMI>20 AND BMI<=26.5 ORDER BY ime ASC;";
-$sql[2]="SELECT * FROM pacijenti WHERE BMI>26.5 AND BMI<=31 ORDER BY ime ASC;";
-$sql[3]="SELECT * FROM pacijenti WHERE BMI>31 ORDER BY ime ASC;";
+$sql[0]="SELECT * FROM pacijenti WHERE BMI<=20 ORDER BY ime;";
+$sql[1]="SELECT * FROM pacijenti WHERE BMI>20 AND BMI<=26.5 ORDER BY ime;";
+$sql[2]="SELECT * FROM pacijenti WHERE BMI>26.5 AND BMI<=31 ORDER BY ime;";
+$sql[3]="SELECT * FROM pacijenti WHERE BMI>31 ORDER BY ime;";
 $i=0;
 while($i<=3)
 {
@@ -70,6 +73,7 @@ while($i<=3)
     }
     $i++;
 }
+
 
 
 ?>
