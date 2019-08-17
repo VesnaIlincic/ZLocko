@@ -19,7 +19,7 @@ class Kompozicija
     }
     function Provera_Kompozitora()
     {
-        if($this->ime_kompozitora==substr("Betoven", 0, 20))
+        if(strpos($this->ime_kompozitora, "Betoven")!==false)
         {
             return true;
         }
@@ -44,19 +44,19 @@ for($i=1;$i<=3;$i++)
     $kompozicija[$i]->Stampa();
     if($kompozicija[$i]->Provera_Barok())
     {
-        echo "Kompozicija je nastala u periodu baroka<br>";
+        echo "Kompozicija je nastala u periodu baroka.<br>";
     }
     else
     {
-        echo "Kompozicija nije nastala u periodu baroka<br>";
+        echo "Kompozicija nije nastala u periodu baroka.<br>";
     }
     if($kompozicija[$i]->Provera_Kompozitora())
     {
-        echo "Ovu kompoziciju je komponovao Ludvig Van Betoven<br>";
+        echo "Ovu kompoziciju je komponovao Ludvig Van Betoven.<br>";
     }
     else
     {
-        echo "Ovu kompoziciju nije komponovao Ludvig Van Betoven<br>";
+        echo "Ovu kompoziciju nije komponovao Ludvig Van Betoven.<br>";
     }
 }
 
