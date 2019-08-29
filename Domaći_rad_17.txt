@@ -1,0 +1,1 @@
+﻿CREATE TABLE `itbootcamp`.`Studenti` ( `Ime` VARCHAR(50) NULL , `Prezime` VARCHAR(80) NULL , `Godine` INT NULL , `Prosečna ocena` DECIMAL NULL ) ENGINE = InnoDB;

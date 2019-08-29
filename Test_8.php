@@ -31,11 +31,11 @@ class Kamion
     }
     public function setRegistarskiBroj($r)
     {
-        $this->regbr=$r;
+        $r>=5;
     }
     public function setNosivost($n)
     {
-        $this->nosivost=0;
+        $n=0;
     }
     public function getRegistarskiBroj()
     {
@@ -49,7 +49,7 @@ class Kamion
     {   
         $s1=$this->getRegistarskiBroj();
         $s2=$this->getNosivost();
-        echo "<p>Reg.br. kamiona je:"."<h4>$s1</h4>".", nosivosti: "."<h3>$s2</h3>"."</p>"; 
+        echo "<p>Reg.br. kamiona je:"."<span style='color:blue'>$s1</span>".", nosivosti: "."<span style='color:red'>$s2</span>"."</p>"; 
     }
 }
 
@@ -79,11 +79,8 @@ function podrzavaNosivost($kamion)
         {
             return true;
         }
-        else
-        {
-            return false;
-        }
     }
+    return false;
 }
 podrzavaNosivost($kamion);
 
@@ -100,13 +97,3 @@ foreach($kamion as $kam)
 }
 
 ?>
-<html>
-    <head>
-        <style>
-            h4{color:blue};
-            h3{color:red};
-        </style>
-    </head>
-    <body>
-    </body>
-</html>

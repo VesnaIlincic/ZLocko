@@ -87,7 +87,7 @@ function MinTez($pacijent)
             $pacminp=$pac->getPrezime();
         }
     }
-echo $tmin."kg) je pacijenta imena: ".$pacmini." ".$pacminp."<br>";
+    echo $tmin."kg) je pacijenta imena: ".$pacmini." ".$pacminp."<br>";
 }
 MinTez($pacijent);
 

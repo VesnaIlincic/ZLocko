@@ -19,7 +19,7 @@ class Kompozicija
     }
     function Provera_Kompozitora()
     {
-        if(strpos($this->ime_kompozitora, "Betoven")!==false)
+        if(strpos($this->ime_kompozitora, "Betoven")!=false)
         {
             return true;
         }
